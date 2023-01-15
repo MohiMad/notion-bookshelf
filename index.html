@@ -25,7 +25,7 @@
         const ctx = canvas.getContext("2d");
         const fps = 10;
 
-        const backgroundColor = "#030318";
+        const backgroundColor = "#010113";
         function randomInt(max) {
             return Math.floor(Math.random() * max);
         }
@@ -53,18 +53,6 @@
             ctx.fill();
         }
 
-        function renderMoon(ctx, blur) {
-            fillCircle(ctx, moon.x, moon.y, moon.r, moon.color);
-            // render a smaller circle above the moon to give it that well-known moon-shape
-            fillCircle(
-                ctx,
-                moon.x - moon.r / 3,
-                moon.y - moon.r / 3,
-                moon.r,
-                backgroundColor
-            );
-        }
-
         function getOpacity(factor) {
             const opacityIncrement =
                 (maxStarOpacity - minStarOpacity) * Math.abs(Math.sin(factor));
@@ -83,8 +71,6 @@
                 fillCircle(ctx, x, y, star.r, `rgba(255, 255, 255, ${opacity}`);
             });
 
-            renderMoon(ctx);
-
             counter++;
 
             setTimeout(() => {
@@ -98,14 +84,7 @@
         const minStarOpacity = 0.1;
         const maxStarOpacity = 0.7;
         const stars = createStars(width, height, 30);
-        const moon = {
-            color: "#fea",
-            x: height / 4,
-            y: width / 5,
-            r: 40
-        };
-
-
+        
         canvas.width = width;
         canvas.height = height;
 
